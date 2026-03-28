@@ -1,6 +1,5 @@
 package com.scaler.bookmyshow.services;
 
-import com.scaler.bookmyshow.dtos.BookMovieResponseDTO;
 import com.scaler.bookmyshow.enums.BookingStatus;
 import com.scaler.bookmyshow.enums.ShowSeatStatus;
 import com.scaler.bookmyshow.models.Booking;
@@ -22,26 +21,28 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class BookingService {
+public class BookingService extends AbstractEntityService<Booking> {
 
-    private UserRepository userRepository;
-
-    private ShowRepository showRepository;
-
-    private ShowSeatRepository showSeatRepository;
-
-    private BookingRepository bookingRepository;
-
-    private PriceCalculatorService priceCalculatorService;
-
-
+    private final BookingRepository bookingRepository;
 
     @Autowired
-    public BookingService(UserRepository userRepository,ShowRepository showRepository,ShowSeatRepository showSeatRepository,BookingRepository bookingRepository,PriceCalculatorService priceCalculatorService){
+    private final UserRepository userRepository;
+
+    @Autowired
+    private final ShowRepository showRepository;
+
+    @Autowired
+    private final ShowSeatRepository showSeatRepository;
+
+    @Autowired
+    private final PriceCalculatorService priceCalculatorService;
+
+    public BookingService(BookingRepository repository, UserRepository userRepository, ShowRepository showRepository, ShowSeatRepository showSeatRepository, PriceCalculatorService priceCalculatorService) {
+        super(repository);
+        this.bookingRepository = repository;
         this.userRepository = userRepository;
         this.showRepository = showRepository;
         this.showSeatRepository = showSeatRepository;
-        this.bookingRepository = bookingRepository;
         this.priceCalculatorService = priceCalculatorService;
     }
 
@@ -106,4 +107,5 @@ public class BookingService {
         // End Transaction
 
     }
+
 }

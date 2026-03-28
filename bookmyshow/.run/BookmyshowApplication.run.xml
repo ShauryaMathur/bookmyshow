@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="BookmyshowApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="bookmyshow" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.scaler.bookmyshow.BookmyshowApplication" />
+    <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

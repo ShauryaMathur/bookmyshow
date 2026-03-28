@@ -5,18 +5,20 @@ import com.scaler.bookmyshow.dtos.BookMovieResponseDTO;
 import com.scaler.bookmyshow.enums.ResponseStatus;
 import com.scaler.bookmyshow.models.Booking;
 import com.scaler.bookmyshow.services.BookingService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-public class BookingController {
+@RestController
+@RequestMapping("/api/bookings")
+public class BookingController extends BaseEntityController<Booking> {
 
-    private BookingService bookingService;
+    private final BookingService bookingService;
 
-    @Autowired
-    public BookingController(BookingService bookingService){
-        this.bookingService = bookingService;
+    public BookingController(BookingService service) {
+        super(service);
+        this.bookingService = service;
     }
+
     public BookMovieResponseDTO bookTicket(BookMovieRequestDTO bookMovieRequestDTO){
         BookMovieResponseDTO responseDTO = new BookMovieResponseDTO();
         try{

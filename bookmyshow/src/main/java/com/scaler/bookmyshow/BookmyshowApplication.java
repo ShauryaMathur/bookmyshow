@@ -1,6 +1,6 @@
 package com.scaler.bookmyshow;
 
-import com.scaler.bookmyshow.controllers.UserController;
+import com.scaler.bookmyshow.controllers.SignupController;
 import com.scaler.bookmyshow.dtos.SignUpRequestDTO;
 import com.scaler.bookmyshow.dtos.SignUpResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +15,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 public class BookmyshowApplication implements CommandLineRunner {
 
 	@Autowired
-	private UserController userController;
+	private SignupController signupController;
 
 	@Override
 	public void run(String... args) throws Exception {
 		SignUpRequestDTO signUpRequestDTO = SignUpRequestDTO.builder().
 				email("sm3@scaler.com")
 				.password("1234").build();
-		SignUpResponseDTO responseDTO = userController.signUp(signUpRequestDTO);
+		SignUpResponseDTO responseDTO = signupController.signUp(signUpRequestDTO);
 	}
 
 	public static void main(String[] args) {
